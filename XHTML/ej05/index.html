@@ -1,0 +1,51 @@
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Información sobre el producto</title>
+</head>
+<body>
+  <form method="POST" action="post.php" enctype="multipart/form-data">
+  <fieldset>
+    <legend>Datos básicos</legend>
+    <p>
+      Nombre: <input type="text" name="nombre" value="" />
+    </p>
+    <p>
+      Password: <input type="password" name="password" value=""/>
+    </p>
+    <p>
+      Foto: <input type="file" name="foto"/>
+    </p>
+    <p>
+      Añadir contador de visitas: <input type="checkbox" name="visitas" value=""/>
+    </p>
+  </fieldset>
+  <fieldset>
+    <legend>Datos económicos</legend>
+    <p>
+      <label for="precio"></label>Precio: <input type="text" id="precio" name="precio" value=""/>
+    </p>
+    <p>
+      <label for="impuestos">Impuestos: </label>
+      <select id="impuestos" name="impuestos" size="2" multiple>
+        <option value="bajos">4%</option>
+        <option value="altos">8%</option>
+      </select>
+    </p>
+    <p>
+    Promoción:
+    <p>
+    </p>
+      <label for="ninguno">Ninguno </label><input type="radio" id="ninguno" name="promocion" value="ninguno"/>
+    </p>
+    <p>
+      <label for="gratuito">Gratuito</label><input type="radio" id="gratuito" name="promocion" value="gratuito"/>
+    </p>
+    <p>
+      <label for="descuento">Descuento 5%</label><input type="radio" id="descuento" name="promocion" value="descuento"/>
+    </p>
+  </fieldset>
+  <input type="submit" name"enviar" value="Enviar" />
+</form>
+</body>
+</html>

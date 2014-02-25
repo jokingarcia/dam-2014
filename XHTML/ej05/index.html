@@ -8,26 +8,38 @@
   <fieldset>
     <legend>Datos básicos</legend>
     <p>
-      Nombre: <input type="text" name="nombre" value="" />
+      Nombre:
     </p>
     <p>
-      Password: <input type="password" name="password" value=""/>
+      <input type="text" name="nombre" value="" />
+    </p>
+    <p>
+      Password:
+    </p>
+    <p>
+    <input type="password" name="password" value=""/>
+    </p>
+    <p>
+    Descripción:
+    </p>
+    <p>
+    <textarea name="descripcion" cols="40" rows="5"></textarea>
     </p>
     <p>
       Foto: <input type="file" name="foto"/>
     </p>
     <p>
-      Añadir contador de visitas: <input type="checkbox" name="visitas" value=""/>
+      Añadir contador de visitas: <input type="checkbox" name="visitas" value="1"/>
     </p>
   </fieldset>
   <fieldset>
     <legend>Datos económicos</legend>
     <p>
-      <label for="precio"></label>Precio: <input type="text" id="precio" name="precio" value=""/>
+      <label for="precio"></label>Precio: <input type="text" id="precio" name="precio" value="" maxlength="6" />&euro;
     </p>
     <p>
       <label for="impuestos">Impuestos: </label>
-      <select id="impuestos" name="impuestos" size="2" multiple>
+      <select id="impuestos" name="impuestos">
         <option value="bajos">4%</option>
         <option value="altos">8%</option>
       </select>

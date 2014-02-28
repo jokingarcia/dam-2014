@@ -1,0 +1,26 @@
+*{
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+li{
+    width: 200px;
+}
+ul{
+    list-style: none;
+}
+ul li{
+    position: relative;
+}
+ul li ul{
+    position: absolute;
+    top: 0;
+    left: 100%;
+   display: none;
+}
+ul li:hover{
+    background-color: grey;
+}
+/*Para que cuando se pase el ratón por encima aparezca del ul li aparezca el ul li ul*/
+ul li:hover ul{
+    display:block;
+}

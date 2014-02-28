@@ -1,0 +1,29 @@
+*{
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+li{
+    width: 200px;
+    display: inline-block;
+}
+ul{
+    list-style: none;
+}
+ul li{
+    position: relative;
+}
+ul li ul{
+    position: absolute;
+    top: 100%;
+    left: 0px;
+   display: none;
+}
+/*Para que cuando se pase el ratón por encima aparezca del ul li aparezca el ul li ul*/
+ul li:hover ul{
+    display:block;
+}
+/*Esto usando un class="horizontal"*/
+/*solos los hijos directos*/
+ul.horizontal > li{
+
+}

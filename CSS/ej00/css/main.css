@@ -32,32 +32,116 @@ h1, .h1{
     text-transform: uppercase;
     font-weight: normal;
 }
-/*TExtos*/
+/*Textos*/
 .bold{font-weight: bold;}
+.italic{font-style: italic;}
 .normal{font-weight: normal;}
 .small{font-size: 0.8em;}
 .big{font-size: 1.5em;}
 .uppercase{text-transform: uppercase;}
 .list{list-style: none; padding: 0;}
 .center{text-align: center;}
+.list p{margin-top: 0;}
+.list li{
+    padding: 20px 0;
+    margin: 20px;
+}
+.list li h3{color:#00f; font-style: italic;}
+.price{font-size: 1.5em;}
+.list li:first-child{padding-top: 0;}
+.list-blue li{
+    background: transparent url("../img/blue.png") no-repeat 0 0;
+    padding-left: 20px;
+}
 
 /*Colores*/
 .rojo{color:#f00}
+.txt-blue{color:#00f;}
 .bg-white{background-color: #fff;}
-.list-blue{padding-left: 20px;}
 /*Layout*/
 .wrapper{
     width: 990px;
     margin: 0 auto;
     padding: 40px 0;
 }
+/*Selecciona el elemento que tenga clase wrapper que esté dentro de algo que tenga bg-gray y que adamás sea el primer hijo*/
+.bg-gray:first-child .wrapper{
+    padding-bottom: 0;
+}
+.wrapper:before, .wrapper.after{
+    .clearfix:before, .clearfix:after;
+    content: "";
+    display: table;
+}
+.wrapper:after{
+    .clearfix:after;
+    clear:both;
+}
+.clearfix{zoom:1;}
 .fleft{float:left;}
 .col-25{width: 25%}
 .col-50{width: 50%}
 .col-75{width: 75%}
-/*Cabecera. Breadcrum (migas de pan) en mayusculas. Actual en rojo*/
-.breadcrum{
+.description{
+    padding: 20;
+}
+/*Esto se usa para que las imágenes no hagan overflow*/
+img{
+    max-width: 100%;
+}
+.well{
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 0 5px #cdcdcd;
+}
+.well p{
+    margin: 0;
+}
+/*Cabecera. Breadcrumb (migas de pan) en mayusculas. Actual en rojo*/
+.breadcrumb{
     text-transform: uppercase;
     list-style: none;
     padding: 0;
 }
+.breadcrumb li{
+    display: inline-block;
+}
+.breadcrumb li:after{
+    content: "/";
+}
+.breadcrumb li:before{
+    content: "";
+}
+.breadcrumb li:last-child:after{
+    content: "";
+}
+.breadcrumb a{
+    margin-right: 5px;
+}
+/*Botones*/
+.btn{
+    color:#fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    width: 100px;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px#cdcdcd;
+    padding: 5px;
+    background-image:linear-gradient(to bottom, #999, #CCC);
+    margin: auto 5px;
+}
+.btn-red{
+    background-image: linear-gradient(to bottom, #f74040 80% , #d33535);
+}
+.btn-green{
+    background-image: linear-gradient(to bottom, #f74040 80% , #d33535);
+}
+.btn-big{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/*Barra*/
+/*Balines*/
+

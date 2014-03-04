@@ -1,0 +1,22 @@
+/*Alternamos 5 estilos diferentes para elementos de una lista*/
+li:nth-child(5n+1){
+    color:blue;
+}
+li:nth-child(5n+2){
+    color:black;
+}
+li:nth-child(5n+3){
+    font-size: 18;
+}
+li:nth-child(5n+4){
+    font-size: 22;
+}
+li:nth-child(5n+5){
+    font-size: 26;
+    color:blue;
+}
+li::selection{
+    color:red;
+}
+
+/**/

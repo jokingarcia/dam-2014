@@ -29,9 +29,8 @@ var validarFormulario = (function(){
         }
         console.log("validador."+ validator + "('" + fieldValue+ "'" + validatorParams +")");
         //Llamar a la función dependiendo del tipo
-        //TODO quitar eval
         //validador.required(campo)
-        return validador;
+        return validador[validator](fieldValue,validatorParams);
         //return eval("validador."+ validator + "('" + fieldValue+ "'" + validatorParams +")");
     };
     var changeStyle = function(validated, element){

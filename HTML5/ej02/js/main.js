@@ -1,33 +1,27 @@
 //Ejercicio 2 HTML 5. Editor de textos
-//TODO: no funciona
-window.$ = function(selector){
-    var elems = document.querySelectorAll(selector);
-    return (elems.length===1) ? elems[0] : elems;
-};
-function negrita(){
-    document.execCommand('bold',false,null);
-}
-
-var editor = (function(){
+$(document).ready(function(){
     "use strict";
-    //todo debería estar aquí dentro para que nada se ejecuta hasta que el navegador esté cargado
-    window.onload = function(){
-        document.designMode = 'on';
-        var save = $('#save');
-        var negrita = $('#negrita');
-        save.addEventListener('click', guardar);
-        negrita.addEventListener('click', negrita);
-    };
 
-    var guardar=function(e){
-        console.log("texto guardado");
+    var contenido = localStorage.getItem('contenido')||"El contenido de este bloque es editable";
 
-    };
-    var negrita=function(e){
-        console.log("negrita");
+    $('#editable').designMode = 'on';
+    $('#editable').html(contenido);
+
+
+    $(document).on('click','#negrita',function(e){
         document.execCommand('bold',false,null);
-    };
 
+    });
+    $(document).on('click','#cursiva',function(e){
+        document.execCommand('italic',false,null);
 
-    return editor;
-})();
+    });
+    $(document).on('click','#sub',function(e){
+        document.execCommand('underline',false,null);
+
+    });
+
+    $(document).on('click','#guardar',function(e){
+        localStorage.setItem('contenido', $('#editable').html());
+    });
+});

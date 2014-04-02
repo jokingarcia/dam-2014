@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>ej06 de HTML 5: Reproductor de video</title>
+</head>
+
+<body>
+
+  <header>
+
+  </header>
+<video id="firstvideo" controls>
+ <source src="videos/video.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+ <source src="videos/video.webm" type='video/webm; codecs="vp8, vorbis"'>
+</video>
+<!--Incluir controles de reproducción, pausa, parar, avanzar y retroceder 10  segundos, inicio y fin. -->
+<p>
+<button type="button" id="play">Play</button>
+<button type="button" id="pause">Pause</button>
+<button type="button" id="stop">Stop</button>
+<button type="button" id="forward">Forward</button>
+<button type="button" id="backward">Backward</button>
+<button type="button" id="start">Start</button>
+<button type="button" id="end">End</button>
+<button type="button" id="fullscreen">Fullscreen</button>
+<input type="range" id="volume"/>
+<progress id="progress"></progress>
+</p>
+
+ <script src="lib/jquery-1.11.0.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

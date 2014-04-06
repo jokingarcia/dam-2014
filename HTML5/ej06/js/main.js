@@ -45,18 +45,13 @@ $(document).ready(function(){
         console.log("volume");
         video[0].volume = $('#volume')[0].value/100;
   });
-  function setupSeekbar(){
-    seekbar.min = video.startTime;
-    seekbar.max = video.duration;
-  }
-  //TODO: aquí hay que hacer video.ontimeupdate para que vaya actualizando el progress
-  video.addEventListener('timeupdate', function (e){
-    $progreso.val(this.currentTime);
-  });
-  $(document).on('click','#progress',function(e){
-        console.log("progress");
-        $('#progress').value=video[0].currentTime;
-  });
-  //TODO: Se podría usar el modernizr y cargar en el source el video correspondiente
+  function updateProgress() {
+     console.log("updateProgress");
+      var progress = document.getElementById('progress');
+      progress.value = parseInt(video[0].currentTime);
+     //   $('#progress')[0].val=parseInt(video[0].currentTime);
+    }
+  video[0].ontimeupdate = updateProgress;
+
 
 });

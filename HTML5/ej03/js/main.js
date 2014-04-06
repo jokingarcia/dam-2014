@@ -1,15 +1,24 @@
 //Ejercicio 3 HTML 5. Formulario
 $(document).ready(function(){
     "use strict";
-    var allInputs = $( ":input" );
-    var pBar = $("#progress");
+     $('#progress').val(0);
     $(document).on('blur',':input',function(e){
         console.log("blur");
-        //Hay una opción para ver si el navegador valida
-        //inputs[i].validity.valid
-        pBar[0].setAttribute("value", "0.5");
-
+        var validos = [];
+        var numvalidos = 0;
+        var inputs = $( ":input" );
+        for (var i = inputs.length - 1; i >= 0; i--) {
+            if (inputs[i].validity.valid && $(inputs[i]).val().length > 0) {
+                validos[i] = 1;
+            } else {
+                validos[i] = 0;
+            }
+        };
+        for (var i = validos.length - 1; i >= 0; i--) {
+            if (validos[i] == 1) {
+                numvalidos++;
+            }
+        };
+        $('#progress').val(numvalidos);
     });
-
-
 });

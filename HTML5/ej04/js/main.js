@@ -1,4 +1,4 @@
-//Ejercicio 3 HTML 5. Formulario
+//Ejercicio 4 HTML 5. Formulario con Modernizr
 $(document).ready(function(){
     "use strict";
     // Cuáles de los 12 nuevos tipos de input soporta el navegador
@@ -91,10 +91,10 @@ $(document).ready(function(){
     }
     //Identificar si el navegador soporta el atributo placeholder. En caso de no soportar dicha funcionalidad,
     //cargar el polyfill correspondiente para añadir dicha funcionalidad al navegador
-    Modernizr.load({
+    /*Modernizr.load({
         test: Modernizr.inputtypes.date,
         yep : 'js/polyfill.js',
         nope: 'js/polyfill.js'
-    });
+    });*/
 
 });

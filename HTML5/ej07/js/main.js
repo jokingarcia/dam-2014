@@ -1,3 +1,4 @@
+//Ejercicio 7: Geolocalización
 $(document).ready(function() {
     // Calcular posición
     //Solicitar las coordenadas actuales, y mostrar dichas coordenadas (y la  precisión)
@@ -9,7 +10,7 @@ $(document).ready(function() {
             console.log(coords.latitude + "" + coords.longitude + "" + coords.accuracy);
             var label = document.createElement('label');
             //altitude - readonly attribute double altitude
-            document.write("altitude"+coords.altitude);
+            //document.write("altitude"+coords.altitude);
             //label.write("altitude"+coords.altitude);
             //altitudeAccuracy - readonly attribute double altitudeAccuracy
             //document.write("altitudeAccuracy"+coords.altitudeAccuracy);
@@ -17,7 +18,7 @@ $(document).ready(function() {
             //document.write("heading"+coords.heading);
             //speed - readonly attribute double speed
             //document.write("speed"+coords.speed);
-            //TODO: watchPosition
+          
             showMap(position);
             }, function(error) {
                 console.log(error.code+""+error.message);

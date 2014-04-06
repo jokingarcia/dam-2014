@@ -1,4 +1,4 @@
-//Ejercicio 8 HTML 5. Storage
+//Ejercicio 8 HTML 5. Web Storage: SessionStorage y LocalStorage
 $(document).ready(function(){
     "use strict";
  //   $('#texto')[0].value=sessionStorage.getItem('texto');

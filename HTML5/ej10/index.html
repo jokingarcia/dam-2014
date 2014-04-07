@@ -8,11 +8,22 @@
 </head>
 
 <body>
+<h1>IndexedDB</h1>
+    <p>
+        <input type="text" id="todo" name="todo" placeholder="What do you need to do?" />
+        <input type="submit" value="Add Todo" onclick="addTodo(); return false;"/>
+        <input type="submit" value="Get tasks" onclick="getAllTodoItems(); return false;"/>
+    </p>
+    <p>
+        <input type="text" id="key" name="key" placeholder="Task key to delete" />
+        <input type="submit" value="Delete Todo" onclick="removeTodo(); return false;"/>
+    </p>
+     <p>
+        <input type="text" id="keyupdate" name="keyupdate" placeholder="Task key to update" />
+        <input type="submit" value="Update Todo" onclick="updateTodo(); return false;"/>
+    </p>
+    <ul id="todoItems"></ul>
 
-  <header>
-
-  </header>
-  
 <script src="lib/jquery-1.11.0.js"></script>
   <script src="js/main.js"></script>
 

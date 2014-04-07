@@ -1,98 +1,132 @@
-//Ejercicio 10 HTML 5. IndexedDB
-/*✔ Disponer de un almacén de tareas pendientes. Sus propiedades son: un identificador único
- que actúa como índice, el texto descriptivo, una propiedad que nos indique si la tarea
-  está completada o no y la fecha/hora de creación
-*/
-$(document).ready(function(){
-    "use strict";   
-   window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB;
- 
-  if ('webkitIndexedDB' in window) {
-    window.IDBTransaction = window.webkitIDBTransaction;
-    window.IDBKeyRange = window.webkitIDBKeyRange;
-  }
- var task = {
-    id:"1",
-    description: "descripción",
-    done: false,
-    date: (new Date).getTime()
- };
-  var request = indexedDB.open('tasks');
-  request.onerror = function () {
-    console.log('failed to open indexedDB');
-  };
-  var db = null, version = '0.1';
-  request.onsuccess = function (event) {
-    // cache a copy of the database handle for the future
-    db = event.target.result;
-    // handle version control
-    if (version != db.version) {
-        // set the version to 0.1
-        var verRequest = db.setVersion(version);
-        verRequest.onsuccess = function (event) {
-           // then create a new object store
-          var store = db.createObjectStore('tasks', {
-             keyPath: 'id',
-             autoIncrement: false
-           });
-          addTask();
-        };
-        verRequest.onerror = function () {
-            alert('unable to set the version :' + version);
-        };
-    }
-   
-  };
-//✔ Crear un método addTask que dado un objeto que corresponde con una tarea, lo 
-//almacene en la base de datos
-function addTask() {
-  console.log("addTask");
-   var transaction =
-    db.transaction(['tasks'], myIDBTransaction.READ_WRITE);
-  var store = transaction.objectStore('tasks');
-  var request = store.put(task);
+window.indexedDB = window.indexedDB || window.mozIndexedDB ||
+                window.webkitIndexedDB || window.msIndexedDB;
+
+window.IDBTransaction = window.IDBTransaction ||
+                window.webkitIDBTransaction || window.msIDBTransaction;
+window.IDBKeyRange = window.IDBKeyRange ||
+                window.webkitIDBKeyRange || window.msIDBKeyRange;
+
+var db = null;
+
+function onerror(e) {
+    console.log(e);
 }
-//✔ Crear un método getTasks que dado un parámetro booleano completado, 
-//nos devuelva las tareas que se encuentran completadas o no
-function getTasks(done) {
-  console.log("getTasks");
-  var transaction =
-    db.transaction(['tasks'], myIDBTransaction.READ);
-  var store = transaction.objectStore('tasks');
-  var data = [];
-  var request = store.openCursor();
-  request.onsuccess = function (event) {
-    var cursor = event.target.result;
-    if (cursor) {
-        // value is the stored object
-        data.push(cursor.value);
-        // get the next object
-        cursor.continue();
-    } else {
-        // we’ve got all the data now, call
-        // a success callback and pass the
-        // data object in.
-    }
-  };
+
+function open () {
+    var version = 4;
+    var request = indexedDB.open("todo-list", version);
+
+    request.onupgradeneeded = function(e) {
+        db = e.target.result;
+
+        var store = db.createObjectStore("todo-list",
+                    { keyPath: "timeStamp" });
+    };
+
+    request.onerror = onerror;
+
+    request.onsuccess = function(e) {
+         db = e.target.result;
+        console.log("DB opened");
+        getAllTodoItems();
+    };
 }
-//✔ Crear un método removeTask que dado un identificador de una tarea, lo elimine de 
+
+function add (todoText) {
+    var transaction = db.transaction(["todo-list"], "readwrite");
+    var store = transaction.objectStore("todo-list");
+
+    var data = {
+        "text": todoText,
+        "timeStamp": new Date().getTime()
+    };
+
+    var request = store.put(data);
+
+    request.onsuccess = function(e) {
+        console.log("Sucessful add: "+e);
+    };
+
+    request.onerror = function(e) {
+        console.log("Error adding: ", e);
+    };
+    store.transaction.oncomplete = function(event){
+        getAllTodoItems();
+    };
+}
+
+function getAllTodoItems() {
+    console.log("getAllTodoItems");
+    var todos = document.getElementById("todoItems");
+    todos.innerHTML = "";
+    var transaction = db.transaction(["todo-list"]);
+    var store = transaction.objectStore("todo-list");
+
+    var cursorRequest = store.openCursor();
+    var data = [];
+    cursorRequest.onsuccess = function(e) {
+       var cursor = event.target.result;
+         if (cursor) {
+             // value is the stored object
+            data.push(cursor.value);
+            // get the next object
+            cursor.continue();
+         } else {
+             //Objects are in data[]
+             console.log("objects are in data[]");
+             for (var i = data.length - 1; i >= 0; i--) {
+                  $('#todoItems').append("<li>"+data[i].text +"</li>");
+             }
+
+        }
+    };
+    cursorRequest.onerror = onerror;
+}
+//✔ Crear un método removeTask que dado un identificador de una tarea, lo elimine de
 //la base de datos. Éste método debe devolver la eliminada.
 function removeTask(id) {
   console.log("removeTask");
-  var myIDBTransaction =
-    window.IDBTransaction
-    || window.webkitIDBTransaction
-    || { READ_WRITE: 'readwrite' };
-  var transaction =
-    db.transaction(['tasks'], myIDBTransaction.READ_WRITE);
-  var store = transaction.objectStore('tasks');
-  var request = store.delete(id);
+   var transaction = db.transaction(["todo-list"], "readwrite");
+    var store = transaction.objectStore("todo-list");
+  var request = store.delete(parseInt(id));
 }
-//✔ Crear un método updateTask que dado un identificador de una tarea, actualice los 
+
+function addTodo() {
+    var todo = document.getElementById("todo");
+    add(todo.value);
+    todo.value = "";
+}
+function removeTodo() {
+    var key = document.getElementById("key");
+    removeTask(key.value);
+    key.value = "";
+}
+function updateTodo() {
+    var key = document.getElementById("keyupdate");
+    updateTask(key.value);
+    key.value = "";
+}
+//✔ Crear un método updateTask que dado un identificador de una tarea, actualice los
 //datos correspondientes a la tarea en la base de datos
 function updateTask(id) {
   console.log("updateTask");
-  
+  var transaction = db.transaction(["todo-list"], "readwrite");
+    var store = transaction.objectStore("todo-list");
+    var data = {
+        "text": "nuevoTexto",
+        "timeStamp": parseInt(id)
+    };
+    var request = store.put(data);
+    request.onsuccess = function(e) {
+        console.log("Sucessful update: "+e);
+    };
+    request.onerror = function(e) {
+        console.log("Error updating: ", e);
+    };
 }
 
-});
+function init() {
+    open();
+}
+
+window.addEventListener("DOMContentLoaded", init, false);

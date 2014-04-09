@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Mobile</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+</head>
+<body>
+<!--✔ Navegacion a páginas simples
+✔ Navegación a multipáginas
+✔ Aplicar transiciones
+✔ Abrir diálogos de distinto tipo
+✔ Abrir popups de distinto tipo
+✔ Mostrar paneles-->
+
+<!-- Start of first page -->
+<div data-role="page" id="page1">
+	<div data-role="header">
+		<h1>Página 1 (multipágina)</h1>
+	</div><!-- /header -->
+	<div role="main" class="ui-content">
+		<p>Primera pagina (multipágina)</p>
+		<p><a href="dialog.html" data-rel="dialog" data-transition="pop">Dialog</a></p>
+		<p><a href="#popupBasic" data-rel="popup">Open Popup</a></p>
+		<!-- Este popup tiene que estar dentro de un page-->
+		<div data-role="popup" id="popupBasic">
+		<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete"
+		data-iconpos="notext" class="ui-btn-right">Close</a>
+		<p>This is a completely basic popup, no options set.<p>
+		</div>
+		<p><a href="#mypanel">Panel</a></p>
+		<div data-role="panel" id="mypanel" data-position="right">
+ 			Contenido panel
+ 			<!-- navbar TODO-->
+ 			<div data-role="navbar" data-iconpos="bottom">
+			<ul>
+				<li><a href="a.html">One</a></li>
+				<li><a href="b.html">Two</a></li>
+			</ul>
+			</div><!-- /navbar -->
+		</div><!-- /panel -->
+		<button data-icon="check" data-inline="true">Button element</button>
+		<div class="ui-grid-b">
+			<div class="ui-block-a">
+				<div class="ui-block-a"><button type="button" data-theme="c">Block A Element 1</button></div>
+				<div class="ui-block-b"><button type="button" data-theme="c">Block A Element 2</button></div>
+				<div class="ui-block-b"><button type="button" data-theme="c">Block A Element 3</button></div>
+			</div>
+			<div class="ui-block-b">
+				<div class="ui-block-a"><button type="button" data-theme="c">Block B Element 1</button></div>
+				<div class="ui-block-b"><button type="button" data-theme="c">Block B Element 2</button></div>
+			</div>
+			<div class="ui-block-c">
+				<div class="ui-block-a"><button type="button" data-theme="c">Block C Element 1</button></div>
+				<div class="ui-block-b"><button type="button" data-theme="c">Block C Element 2</button></div>
+			</div>
+		</div><!-- /grid-b -->
+
+		<div data-role="collapsible">
+   			<h3>I'm a header</h3>
+   			<p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+		</div>
+
+		<p>Ir a página interna <a href="#page2" data-transition="slide">page2</a></p>
+
+	</div><!-- /content -->
+
+
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+		<!-- Default button TODO-->
+		<a href="index.html" data-icon="delete">Cancel</a>
+		<a href="index.html" data-icon="check">Save</a>
+		<!-- Fin default button-->
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+
+<!-- Start of second page -->
+<div data-role="page" id="page2">
+	<div data-role="header">
+		<h1>Página 2 (multipágina)</h1>
+	</div><!-- /header -->
+	<div role="main" class="ui-content">
+		<p>Segunda página. Solo me muestro si un link que referencia mi id se clica.</p>
+		<p><a href="#page1" data-transition="slide" data-rel="back" data-direction=”reverse”>Volver a página 1</a></p>
+
+	</div><!-- /content -->
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+		<!-- Buttons footer TODO-->
+		<a href="index.html" data-role="button" data-icon="plus">Add</a>
+		<a href="index.html" data-role="button" data-icon="arrow-u">Up</a>
+		<a href="index.html" data-role="button" data-icon="arrow-d">Down</a>
+		<!-- Buttons footer end-->
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+</body>
+</html>

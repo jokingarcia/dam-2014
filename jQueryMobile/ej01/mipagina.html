@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
 </head>
 <body>
 <!--✔ Navegacion a páginas simples
@@ -65,20 +66,159 @@
    			<p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
 		</div>
 
+		<label for="flip-1">Flip switch:</label>
+			<select name="flip-1" id="flip-1" data-role="slider">
+				<option value="off">Off</option>
+				<option value="on">On</option>
+			</select>
+
+		<fieldset data-role="controlgroup">
+			<legend>Choose a pet:</legend>
+     		<input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" />
+     		<label for="radio-choice-1">Cat</label>
+
+     		<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"  />
+     		<label for="radio-choice-2">Dog</label>
+
+     		<input type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"  />
+     		<label for="radio-choice-3">Hamster</label>
+
+     		<input type="radio" name="radio-choice" id="radio-choice-4" value="choice-4"  />
+     		<label for="radio-choice-4">Lizard</label>
+		</fieldset>
+
+		<label><input type="checkbox" name="checkbox-0" /> I agree </label>
+
+		<label for="basic">Text Input:</label>
+   		 <input type="text" name="name" id="basic" value=""  />
+
+		<label for="search-basic">Search Input:</label>
+		<input type="search" name="search" id="search-basic" value="" />
+
+		<label for="slider-1">Input slider:</label>
+		<!--Se usa el data-mini=true para usar la versión pequeña -->
+		<input type="range" name="slider-1" id="slider-1" value="60" min="0" max="100" data-mini="true"/>
+
+		<div data-role="fieldcontain">
+  		 <label for="select-choice-1" class="select">Shipping method:</label>
+  		 <select name="select-choice-1" id="select-choice-1">
+     		 <option value="standard">Standard: 7 day</option>
+     		 <option value="rush">Rush: 3 days</option>
+     		 <option value="express">Express: next day</option>
+     		 <option value="overnight">Overnight</option>
+   		</select>
+		</div>
+
+		<ul data-role="listview">
+			<li><a href="#page3">Acura</a>
+
+			</li>
+			<li><a href="audi.html">Audi</a></li>
+			<li><a href="bmw.html">BMW</a></li>
+		</ul>
+
+	<table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke">
+     <thead>
+       <tr>
+         <th data-priority="2">Rank</th>
+         <th>Movie Title</th>
+         <th data-priority="3">Year</th>
+         <th data-priority="1"><abbr title="Rotten Tomato Rating">Rating</abbr></th>
+         <th data-priority="5">Reviews</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <th>1</th>
+         <td><a href="http://en.wikipedia.org/wiki/Citizen_Kane" data-rel="external">Citizen Kane</a></td>
+         <td>1941</td>
+         <td>100%</td>
+         <td>74</td>
+       </tr>
+       <tr>
+         <th>2</th>
+         <td><a href="http://en.wikipedia.org/wiki/Casablanca_(film)" data-rel="external">Casablanca</a></td>
+         <td>1942</td>
+         <td>97%</td>
+         <td>64</td>
+       </tr>
+       <tr>
+         <th>3</th>
+         <td><a href="http://en.wikipedia.org/wiki/The_Godfather" data-rel="external">The Godfather</a></td>
+         <td>1972</td>
+         <td>97%</td>
+         <td>87</td>
+       </tr>
+       <tr>
+         <th>4</th>
+         <td><a href="http://en.wikipedia.org/wiki/Gone_with_the_Wind_(film)" data-rel="external">Gone with the Wind</a></td>
+         <td>1939</td>
+         <td>96%</td>
+         <td>87</td>
+       </tr>
+       <tr>
+         <th>5</th>
+         <td><a href="http://en.wikipedia.org/wiki/Lawrence_of_Arabia_(film)" data-rel="external">Lawrence of Arabia</a></td>
+         <td>1962</td>
+         <td>94%</td>
+         <td>87</td>
+       </tr>
+       <tr>
+         <th>6</th>
+         <td><a href="http://en.wikipedia.org/wiki/Dr._Strangelove" data-rel="external">Dr. Strangelove Or How I Learned to Stop Worrying and Love the Bomb</a></td>
+         <td>1964</td>
+         <td>92%</td>
+         <td>74</td>
+       </tr>
+       <tr>
+         <th>7</th>
+         <td><a href="http://en.wikipedia.org/wiki/The_Graduate" data-rel="external">The Graduate</a></td>
+         <td>1967</td>
+         <td>91%</td>
+         <td>122</td>
+       </tr>
+       <tr>
+         <th>8</th>
+         <td><a href="http://en.wikipedia.org/wiki/The_Wizard_of_Oz_(1939_film)" data-rel="external">The Wizard of Oz</a></td>
+         <td>1939</td>
+         <td>90%</td>
+         <td>72</td>
+       </tr>
+       <tr>
+         <th>9</th>
+         <td><a href="http://en.wikipedia.org/wiki/Singin%27_in_the_Rain" data-rel="external">Singin' in the Rain</a></td>
+         <td>1952</td>
+         <td>89%</td>
+         <td>85</td>
+       </tr>
+       <tr>
+         <th>10</th>
+         <td class="title"><a href="http://en.wikipedia.org/wiki/Inception" data-rel="external">Inception</a></td>
+         <td>2010</td>
+         <td>84%</td>
+         <td>78</td>
+       </tr>
+     </tbody>
+   </table>
+
 		<p>Ir a página interna <a href="#page2" data-transition="slide">page2</a></p>
 
 	</div><!-- /content -->
 
 
 
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-		<!-- Default button TODO-->
-		<a href="index.html" data-icon="delete">Cancel</a>
-		<a href="index.html" data-icon="check">Save</a>
-		<!-- Fin default button-->
-	</div><!-- /footer -->
+	<footer data-role="footer" data-position="fixed">
+
+	</footer><!-- /footer -->
 </div><!-- /page -->
+
+<div data-role="page" id="page3">
+	<ul data-role="listview">
+					<li><a href="audi.html">Acura</a></li>
+					<li><a href="audi.html">Audi</a></li>
+					<li><a href="bmw.html">BMW</a></li>
+				</ul>
+</div>
 
 
 
@@ -101,6 +241,6 @@
 		<!-- Buttons footer end-->
 	</div><!-- /footer -->
 </div><!-- /page -->
-
+<script src="js/main.js"></script>
 </body>
 </html>

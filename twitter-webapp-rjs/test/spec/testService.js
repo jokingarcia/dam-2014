@@ -41,6 +41,7 @@
                 done();
             });
             it('Get all tweets from Twitter', function (done) {
+
                 srv.getTweets({
                     apiKey : ''
                 }, function(tweets){
@@ -50,7 +51,7 @@
                         throw "Method returned empty value";
                     }
                 }, function(err){
-                        throw err;
+                    throw err;
                 });
             });
         });

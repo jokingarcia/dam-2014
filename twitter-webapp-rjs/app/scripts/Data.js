@@ -23,6 +23,11 @@ define('Data', ['ydn-db'], function(ydn) {
         req.done(success);
         req.fail(error);
     };
+    var getTweets = function(success, error) {
+        var req = db.values(tweetTable);
+        req.done(success);
+        req.fail(error);
+    };
 
     var updateTweet = function(tweet, success, error) {
         getTweet(tweet.id, function(t){
@@ -60,6 +65,7 @@ define('Data', ['ydn-db'], function(ydn) {
         getTweet : getTweet,
         updateTweet : updateTweet,
         removeTweet : removeTweet,
-        clear : clear
+        clear : clear,
+        getTweets : getTweets
     };
 });

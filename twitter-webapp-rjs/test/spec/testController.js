@@ -6,7 +6,7 @@
     require.config({
         baseUrl : '../../app/scripts/',
         paths : {
-            jquery: '../bower_components/jquery/dist/jquery',
+             jquery: '../bower_components/jquery/dist/jquery',
         },
         shim : {
             // 'ydn-db': {
@@ -16,32 +16,43 @@
     });
 
     describe('Controller module', function () {
-        var ctrl, srv;
+        var ctrl, srv, DB;
+
+        before(function(done){
+            require(['Data'], function(data){
+                DB = data;
+
+                DB.clear(function(){
+                    done();
+                });
+            });
+        });
 
         beforeEach(function(done){
-            require(['Controller, Service'], function(Controller, service){
+            require(['Controller', 'Service', 'Data'], function(Controller, Service, Data){
                 ctrl = Controller;
-                srv = service;
+                srv = Service;
+                DB = Data;
+
                 sinon.spy(srv, 'getTweets');
-                //sinon.spy(DB, 'addTweets');
+                sinon.spy(DB, 'addTweets');
                 done();
             });
         });
 
-        afterEach(function(done){
-            getTweets.restore();
-            addTweets.restore();
-            done();
-        });
+        // afterEach(function(done){
+        //     done();
+        // });
 
-        describe('#getTweetsFromTweeter', function () {
-            it('Get all tweets from tweeter and save in DB', function () {
-                ctrl.getTweetsFromTweeter();
-                assert.isTrue(srv.getTweets.calledOnce, 'getTweets not called');
-                assert.isTrue(DB.addTweets.calledOnce, 'addTweets not called');
-                done();
+        describe('#getTweetsFromTwitter', function () {
+            it('Get all tweets from Twitter and save to DB', function (done) {
+                ctrl.getTweetsFromTwitter(function(){
+                    assert.isTrue(DB.addTweets.calledOnce, 'addTweets not called');
+                    done();
+                 });
+                //ctrl.getTweetsFromTwitter( assert.isTrue(srv.getTweets.calledOnce, 'getTweets not called'), 'error getTweetsFromTwitter');
+
             });
-
         });
     });
 })();

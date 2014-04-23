@@ -7,11 +7,9 @@ define('Service', ['jquery'], function($){
             type : 'POST',
             dataType : 'JSON',
             cache : false,
-            success : function(data, textStatus, jqXHR) {
-                console.log('success initialize tweets ajax');
-            },
+            success : success,
             error : function(jqXHR, status, error) {
-                console.log(error);
+                error(error);
             }
         });
     };

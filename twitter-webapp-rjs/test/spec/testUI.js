@@ -35,37 +35,19 @@
         // });
 
         describe('#showTweetsList', function () {
-
-            it('Show a list of tweets in the html', function (done) {
-                //comprobar numero de hijos usando jquery
+            it('One tweet is correctly printed', function () {
                 ui.showTweetsList([
-                    {
-                        id : 1,
-                        text : 'tweet de prueba'
-                    }
-                ], function(){
-                    assert.equal($('#twitter-list').children().length, 1);
-                    done();
-                });
-
-
+                    {id : 1, text : 'Testing showTweetsList method'}
+                ]);
+                assert.equal($('#twitter-list').children().length, 1);
             });
-            it('Show a list of tweets from the database', function (done) {
-                // Obtener de la BD
-                //success, error
-               DB.getTweets(
-                function(tweets){
-                    ui.showTweetsList(
-                        tweets,
-                        function(){
-                            assert.equal($('#twitter-list').children().length, 100);
-                            done();
-                        }
-                    )
-
+            it('All tweets are correctly printed', function () {
+                ctrl.getTweetsFromTwitter(function(){
+                    DB.getTweets(function(tweets){
+                        ui.showTweetsList(tweets);
+                        assert.equal($('#twitter-list').children().length, 100);
+                    });
                 });
-
-
             });
         });
     });

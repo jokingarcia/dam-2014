@@ -8,12 +8,14 @@ define('Data', ['ydn-db'], function(ydn) {
 
     var addTweet = function(tweet, success, error) {
         var req = db.add({name: tweetTable, keyPath: keyPath}, tweet);
+        throwEvent();
         req.done(success);
         req.fail(error);
     };
 
     var addTweets = function(tweets, success, error) {
         var req = db.add({name: tweetTable, keyPath: keyPath}, tweets);
+        throwEvent();
         req.done(success);
         req.fail(error);
     };
@@ -33,6 +35,7 @@ define('Data', ['ydn-db'], function(ydn) {
         getTweet(tweet.id, function(t){
             if(t) {
                 var req = db.put({name: tweetTable, keyPath: keyPath}, tweet);
+                throwEvent();
                 req.done(success);
                 req.fail(error);
             } else {
@@ -46,6 +49,7 @@ define('Data', ['ydn-db'], function(ydn) {
             if(tweet) {
                 var req = db.remove(tweetTable, id);
                 req.done(success);
+                throwEvent();
                 req.fail(error);
             } else {
                 error('There is no tweet with id ' + id);
@@ -56,7 +60,13 @@ define('Data', ['ydn-db'], function(ydn) {
     var clear = function(success, error){
         var req = db.clear(tweetTable);
         req.done(success);
+        throwEvent();
         req.fail(error);
+    };
+
+    var throwEvent = function(){
+        var event = new CustomEvent('datachange');
+        document.dispatchEvent(event);
     };
 
     return {

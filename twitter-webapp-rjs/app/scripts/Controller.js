@@ -1,4 +1,4 @@
-define('Controller', ['Data', 'Service'], function(DB, srv){
+define('Controller', ['Data', 'Service', 'UI'], function(DB, srv, UI){
     'use strict';
 
     var getTweetsFromTwitter = function(success, error) {
@@ -30,12 +30,19 @@ define('Controller', ['Data', 'Service'], function(DB, srv){
             UI.showTweetsList(tweets);
         }
     };
+    var showLatestTweets = function(){
+        DB.getTweets(function(tweets){
+            UI.showTweetsList(tweets);
+        });
+
+    };
 
     var error = function(error){
         throw error;
     };
 
     return {
-        getTweetsFromTwitter : getTweetsFromTwitter
+        getTweetsFromTwitter : getTweetsFromTwitter,
+        showLatestTweets : showLatestTweets
     };
 });

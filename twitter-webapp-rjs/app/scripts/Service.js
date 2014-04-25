@@ -1,4 +1,4 @@
-define('Service', ['jquery'], function($){
+define('Service', ['quo'], function($){
     var getTweets = function(config, success, error){
         //es mejor ajax que get o getJSON, porque aquí nos avisa si algo va mal
         $.ajax({
